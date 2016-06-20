@@ -30,7 +30,15 @@
       app.get('views').should.equal(`${dirname}/views`);
     });
 
-    it('should have /public as public directory');
+    it('should have /public as public directory', function(done) {
+      request
+        .get(`${baseurl}/public/test.txt`)
+        .end(function(err, res) {
+          if (err) done(err);
+          res.text.should.equal('working\n');
+          done();
+        });
+    });
 
     after(function(done) {
       server.close(done);

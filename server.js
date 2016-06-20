@@ -6,11 +6,16 @@
   const http = require('http');
   const server = http.createServer(app);
   const io = require('socket.io')(server);
+  const path = require('path');
 
   /*app
    **************************/
   app.set('port', process.env.PORT || 4802);
   app.set('view engine', 'pug');
+
+  /*Static files
+   ***************************/
+  app.use('/public', express.static(path.join(__dirname, '/public')));
 
 
   app.get('/', function(req, res) {

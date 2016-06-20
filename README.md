@@ -1,6 +1,6 @@
 # Chat App
 
-A simple chat app built with socket.io.
+A simple chat app built with socket.io. Visit [chat-app-fr48.herokuapp.com](http://chat-app-fr48.herokuapp.com/) to have a look.
 
 Currently, it's exact copy of the example on socket.io's website. I plan to complete the homework given.
 
