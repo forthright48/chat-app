@@ -4,8 +4,11 @@
   "description": "my first socket.io app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
+  "engines": {
+    "node": "6.2.1"
+  } ,
   "author": "forthright48",
   "license": "MIT",
   "dependencies": {
