@@ -1,0 +1,39 @@
+(function() {
+  'use strict';
+
+  const should = require('chai').should();
+  const {
+    dirname,
+    server,
+    app
+  } = require('../server.js');
+  const request = require('superagent');
+  const baseurl = 'http://localhost:1234';
+
+  describe('server.js', function() {
+    before(function(done) {
+      app.set('port', 1234);
+      server.listen(app.get('port'), function(err) {
+        done(err);
+      });
+    });
+
+    it('should be running on port 1234', function() {
+      app.get('port').should.equal(1234);
+    });
+
+    it('should be using pug as view engine', function() {
+      app.get('view engine').should.equal('pug');
+    });
+
+    it('should be using /views as render folder', function() {
+      app.get('views').should.equal(`${dirname}/views`);
+    });
+
+    it('should have /public as public directory');
+
+    after(function(done) {
+      server.close(done);
+    });
+  });
+}());

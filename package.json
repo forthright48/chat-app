@@ -4,15 +4,22 @@
   "description": "my first socket.io app",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "./node_modules/mocha/bin/mocha --recursive --reporter spec ./tests"
   },
   "engines": {
     "node": "6.2.1"
-  } ,
+  },
   "author": "forthright48",
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
+    "pug": "^2.0.0-beta3",
     "socket.io": "^1.4.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "superagent": "^2.0.0"
   }
 }
