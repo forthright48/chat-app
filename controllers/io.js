@@ -17,16 +17,17 @@
       socket.on('user register', function(username) {
         people[socket.id] = username;
         socket.emit('user register success');
+        socket.broadcast.emit('user join', username);
       });
-
-      io.emit('user enter', `${socket.id} has entered the chat`);
 
       socket.on('chat message', function(msg) {
         socket.broadcast.emit('chat message', people[socket.id], msg);
       });
 
       socket.on('disconnect', function() {
-        io.emit('user exit', `${socket.id} has left the chat`);
+        if (people[socket.id]) {
+          socket.broadcast.emit('user exit', people[socket.id]);
+        }
         delete people[socket.id];
       });
     });

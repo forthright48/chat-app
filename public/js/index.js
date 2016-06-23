@@ -29,12 +29,12 @@ $(document).ready(function() {
     socket.emit('chat message', msg);
 
     ///Don't wait for server, append it right now
-    $('.messages').append($('<li>').text(`${username} says: ${msg}`));
+    $('.messages').append($('<li>').html(`<b>${username}</b>: ${msg}`));
     ///Scroll the document down
     $('html,body').scrollTop(100000000000000000);
 
     ///Clear the input form
-    $('.m').val('');
+    $('.msg').val('');
 
     return false;
   });
@@ -44,21 +44,26 @@ $(document).ready(function() {
     $('.sendmsg').show().focus();
     $('.register').hide();
     $('messages').append($('<li>').text('You have entered successfully'));
+
+    $('.msg').focus();
   });
 
   socket.on('chat message', function(username, msg) {
-    $('.messages').append($('<li>').text(`${username} says: ${msg}`));
+    $('.messages').append($('<li>').html(`<b>${username}</b>: ${msg}`));
 
     ///Scroll the document down
     $('html,body').scrollTop(100000000000000000);
   });
 
-  socket.on('user enter', function(msg) {
-    $('.messages').append($('<li>').addClass('user-enter u-text-small u-text-center').text(msg));
+  socket.on('user join', function(username) {
+    $('.messages').append($('<li>').addClass('user-enter u-text-small u-text-center')
+      .text(`${username} has joined the chat room`)
+    );
   });
 
-  socket.on('user exit', function(msg) {
-    $('.messages')
-      .append($('<li>').addClass('user-exit u-text-small u-text-center').text(msg));
+  socket.on('user exit', function(username) {
+    $('.messages').append($('<li>').addClass('user-exit u-text-small u-text-center')
+      .text(`${username} has left the chat room`)
+    );
   });
 });
