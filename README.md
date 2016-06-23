@@ -8,7 +8,7 @@ Currently, it's exact copy of the example on socket.io's website. I plan to comp
 
 These are the following improvements mentioned by socket.io:
 
-1. Broadcast a message to connected users when someone connects or disconnects
+1. ~Broadcast a message to connected users when someone connects or disconnects~
 2. Add support for nicknames
 3. Don’t send the same message to the user that sent it himself. Instead, append the message directly as soon as he presses enter.
 4. Add “{user} is typing” functionality

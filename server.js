@@ -5,7 +5,6 @@
   const app = express();
   const http = require('http');
   const server = http.createServer(app);
-  const io = require('socket.io')(server);
   const path = require('path');
 
   /*app
@@ -17,21 +16,12 @@
    ***************************/
   app.use('/public', express.static(path.join(__dirname, '/public')));
 
+  /*Attach Socket
+   ***************************/
+  require('./controllers/io.js').attachSocket(server);
 
   app.get('/', function(req, res) {
     res.render('index.pug');
-  });
-
-  io.on('connection', function(socket) {
-    io.emit('user enter');
-
-    socket.on('chat message', function(msg) {
-      io.emit('chat message', msg);
-    });
-
-    socket.on('disconnect', function() {
-      io.emit('user exit');
-    });
   });
 
   if (require.main === module) {
