@@ -16,7 +16,7 @@ html
         .items.u-flex
           ul#messages
         .row.middle
-          form.any.items(action="",onsubmit="return sendMessage()")
+          form.any.items(action="")
             input#m(autocomplete="off")
             button Send
       .row.footer
@@ -27,7 +27,7 @@ html
     script( src="https://code.jquery.com/jquery-3.0.0.min.js")
     script.
       var socket = io();
-      function sendMessage(){
+      $('form').submit(function(){
         let msg = $('#m').val();
 
         ///Don't allow blank strings
@@ -35,9 +35,8 @@ html
 
         socket.emit('chat message', msg );
         $('#m').val('');
-
         return false;
-      };
+      });
 
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
