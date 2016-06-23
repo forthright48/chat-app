@@ -1,9 +1,15 @@
-(function() {
+$(document).ready(function() {
   'use strict';
-  const socket = io();
 
-  $('form').submit(function() {
-    const msg = $('#m').val();
+  const socket = io();
+  let ready = false;
+
+  $('.messages').hide();
+  $('.sendmsg').hide();
+  $('.username').focus();
+
+  $('.sendmsg').submit(function() {
+    const msg = $('.msg').val();
 
     ///Don't allow blank strings
     if (msg === '') return false;
@@ -36,4 +42,4 @@
     $('.messages')
       .append($('<li>').addClass('user-exit u-text-small u-text-center').text(msg));
   });
-}());
+});
