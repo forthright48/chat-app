@@ -28,15 +28,12 @@
     $('html,body').scrollTop(100000000000000000);
   });
 
-  socket.on('user enter', function() {
-    $('.messages').append($('<li>')
-      .addClass('user-enter u-text-small u-text-center')
-      .text('A user has entered')
-    );
+  socket.on('user enter', function(msg) {
+    $('.messages').append($('<li>').addClass('user-enter u-text-small u-text-center').text(msg));
   });
 
-  socket.on('user exit', function() {
+  socket.on('user exit', function(msg) {
     $('.messages')
-      .append($('<li>').addClass('user-exit u-text-small u-text-center').text('A user left chat'));
+      .append($('<li>').addClass('user-exit u-text-small u-text-center').text(msg));
   });
 }());
