@@ -15,3 +15,9 @@ These are the following improvements mentioned by socket.io:
 5. Show who’s online
 6. Add private messaging
 7. Share your improvements!
+
+Some improvements of my own:
+
+1. New message gets hidden behind input form.
+2. Stop adding blank messages.
+3. Wrap long messages.
