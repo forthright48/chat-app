@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  let people = {};
+
   module.exports = {
     attachSocket
   };
@@ -12,6 +14,11 @@
   function attachSocket(server) {
     const io = require('socket.io')(server);
     io.on('connection', function(socket) {
+
+      socket.on('user register', function(username) {
+        people[socket.id] = username;
+      });
+
       io.emit('user enter', `${socket.id} has entered the chat`);
 
       socket.on('chat message', function(msg) {
@@ -20,6 +27,7 @@
 
       socket.on('disconnect', function() {
         io.emit('user exit', `${socket.id} has left the chat`);
+        delete people[socket.id];
       });
     });
   }

@@ -8,6 +8,17 @@ $(document).ready(function() {
   $('.sendmsg').hide();
   $('.username').focus();
 
+  ///When register form is submitted
+  $('.register').submit(function() {
+    let username = $('.username').val();
+    if (username === '') return false;
+
+    ///Register this username
+    socket.emit('user register', username);
+
+    return false;
+  });
+
   $('.sendmsg').submit(function() {
     const msg = $('.msg').val();
 
