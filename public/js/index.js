@@ -2,7 +2,7 @@ $(document).ready(function() {
   'use strict';
 
   const socket = io();
-  let ready = false;
+  let username;
 
   $('.messages').hide();
   $('.sendmsg').hide();
@@ -10,12 +10,13 @@ $(document).ready(function() {
 
   ///When register form is submitted
   $('.register').submit(function() {
-    let username = $('.username').val();
+    username = $('.username').val();
     if (username === '') return false;
 
     ///Register this username
     socket.emit('user register', username);
 
+    $('.username').val('');
     return false;
   });
 
@@ -28,18 +29,25 @@ $(document).ready(function() {
     socket.emit('chat message', msg);
 
     ///Don't wait for server, append it right now
-    $('.messages').append($('<li>').text(msg));
+    $('.messages').append($('<li>').text(`${username} says: ${msg}`));
     ///Scroll the document down
     $('html,body').scrollTop(100000000000000000);
 
     ///Clear the input form
-    $('#m').val('');
+    $('.m').val('');
 
     return false;
   });
 
-  socket.on('chat message', function(msg) {
-    $('.messages').append($('<li>').text(msg));
+  socket.on('user register success', function() {
+    $('.messages').show();
+    $('.sendmsg').show().focus();
+    $('.register').hide();
+    $('messages').append($('<li>').text('You have entered successfully'));
+  });
+
+  socket.on('chat message', function(username, msg) {
+    $('.messages').append($('<li>').text(`${username} says: ${msg}`));
 
     ///Scroll the document down
     $('html,body').scrollTop(100000000000000000);
