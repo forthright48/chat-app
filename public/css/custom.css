@@ -1,13 +1,21 @@
-#messages li:nth-child(odd) {
+li:nth-child(odd) {
   background: #eee;
 }
-#messages {
+.messages {
   list-style-type: none;
   margin: 0; padding: 0;
 }
-#messages li {
+li {
   padding: 5px 10px;
   word-wrap: break-word;
+}
+
+li.user-enter {
+  background: khaki;
+}
+
+.u-text-small {
+  font-size: 12px;
 }
 
 .footer {

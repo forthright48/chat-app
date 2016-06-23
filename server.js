@@ -23,7 +23,7 @@
   });
 
   io.on('connection', function(socket) {
-    console.log('a user connected');
+    io.emit('user enter');
 
     socket.on('chat message', function(msg) {
       io.emit('chat message', msg);

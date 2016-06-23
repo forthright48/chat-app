@@ -14,7 +14,7 @@ html
           h1 Chat App
       .tower.u-flex
         .items.u-flex
-          ul#messages
+          ul.messages
         .row.middle
           form.any.items(action="")
             input#m(autocomplete="off")
@@ -25,22 +25,4 @@ html
 
     script( src="/socket.io/socket.io.js")
     script( src="https://code.jquery.com/jquery-3.0.0.min.js")
-    script.
-      var socket = io();
-      $('form').submit(function(){
-        let msg = $('#m').val();
-
-        ///Don't allow blank strings
-        if ( msg == '' ) return false;
-
-        socket.emit('chat message', msg );
-        $('#m').val('');
-        return false;
-      });
-
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-
-        ///Scroll the document down
-        $('html,body').scrollTop(100000000000000000);
-      });
+    script( src="/public/js/index.js")
