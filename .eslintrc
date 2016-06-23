@@ -64,7 +64,6 @@
     "keyword-spacing": 2,
     "space-infix-ops": 2,
     "no-whitespace-before-property": 2,
-    "newline-per-chained-call": 2,
     padded-blocks: ["error", "never"],
     "space-in-parens": 2,
     "array-bracket-spacing": 2,

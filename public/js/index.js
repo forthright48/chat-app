@@ -24,4 +24,9 @@
     $('.messages')
       .append($('<li>').addClass('user-enter u-text-small u-text-center').text('A user has entered'));
   });
+
+  socket.on('user exit', function() {
+    $('.messages')
+      .append($('<li>').addClass('user-exit u-text-small u-text-center').text('A user left chat'));
+  });
 }());

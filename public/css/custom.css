@@ -11,7 +11,10 @@ li {
 }
 
 li.user-enter {
-  background: khaki;
+  background: Khaki;
+}
+li.user-exit {
+  background: DarkKhaki;
 }
 
 .u-text-small {

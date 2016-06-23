@@ -30,7 +30,7 @@
     });
 
     socket.on('disconnect', function() {
-      console.log('user disconnected');
+      io.emit('user exit');
     });
   });
 
