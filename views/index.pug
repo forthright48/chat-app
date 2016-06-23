@@ -28,7 +28,9 @@ html
     script.
       var socket = io();
       $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+        let msg = $('#m').val();
+        if ( msg == '' ) return false; ///Don't allow blank strings
+        socket.emit('chat message', msg );
         $('#m').val('');
         return false;
       });

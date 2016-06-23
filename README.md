@@ -19,5 +19,5 @@ These are the following improvements mentioned by socket.io:
 Some improvements of my own:
 
 1. New message gets hidden behind input form.
-2. Stop adding blank messages.
+2. ~~Stop adding blank messages.~~
 3. Wrap long messages.
