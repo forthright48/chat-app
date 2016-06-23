@@ -1,14 +1,27 @@
 doctype 5
 html
   head
-    title Chat App fr48
+    title Chat App
+    link(rel="stylesheet", href="/public/css/normalize.css" )
+    link(rel="stylesheet", href="/public/css/simplecss.css" )
+    link(rel="stylesheet", href="/public/css/utilities.css" )
     link(rel="stylesheet", href="/public/css/custom.css" )
 
   body
-    ul#messages
-    form(action="")
-      input#m(autocomplete="off")
-      button Send
+    .container
+      .row
+        .any.items
+          h1 Chat App
+      .tower.u-flex
+        .items.u-flex
+          ul#messages
+        .row.middle
+          form.any.items(action="")
+            input#m(autocomplete="off")
+            button Send
+      .row.footer
+        .any.items.u-text-center
+          p Copyright 2016 Mohammad Samiul Islam
 
     script( src="/socket.io/socket.io.js")
     script( src="https://code.jquery.com/jquery-3.0.0.min.js")
