@@ -29,11 +29,17 @@ html
       var socket = io();
       $('form').submit(function(){
         let msg = $('#m').val();
-        if ( msg == '' ) return false; ///Don't allow blank strings
+
+        ///Don't allow blank strings
+        if ( msg == '' ) return false;
+
         socket.emit('chat message', msg );
         $('#m').val('');
         return false;
       });
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
+        
+        ///Scroll the document down
+        $('html,body').scrollTop(100000000000000000);
       });
