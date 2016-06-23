@@ -1,0 +1,24 @@
+doctype 5
+html
+  head
+    title Chat App fr48
+    link(rel="stylesheet", href="/public/css/custom.css" )
+
+  body
+    ul#messages
+    form(action="")
+      input#m(autocomplete="off")
+      button Send
+
+    script( src="/socket.io/socket.io.js")
+    script( src="https://code.jquery.com/jquery-3.0.0.min.js")
+    script.
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });

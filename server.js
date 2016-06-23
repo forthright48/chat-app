@@ -19,7 +19,7 @@
 
 
   app.get('/', function(req, res) {
-    res.sendFile(`${__dirname}/index.html`);
+    res.render('index.pug');
   });
 
   io.on('connection', function(socket) {
